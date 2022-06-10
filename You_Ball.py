@@ -66,6 +66,10 @@ collision_tolerance = -20
 over_font = pygame.font.SysFont('system', 80)
 over = False
 
+# icon
+icon = pygame.image.load('icon.png')
+pygame.display.set_icon(icon)
+
 
 def spawn_obstacle():
     global obstacle_pos, obstacle_time, can_spawn
