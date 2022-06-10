@@ -21,8 +21,9 @@ position.xy = 366, 266
 
 # sounds
 mixer.music.load('Sounds/background_noise.wav')
+score_sound = mixer.Sound('Sounds/score_cheering.ogg')
 mixer.music.play(-1)
-mixer.music.set_volume(0.05)
+mixer.music.set_volume(0.02)
 
 # score
 can_score = True
@@ -30,8 +31,6 @@ score_value = 0
 font = pygame.font.Font('freesansbold.ttf', 32)
 text_x = 10
 text_y = 10
-score_sound = mixer.Sound('Sounds/score_cheering.ogg')
-score_sound.set_volume(0.5)
 
 # timer
 current_time = 0
@@ -172,6 +171,7 @@ while running:
     if score_point():
         score_value += 2
         score_sound.play()
+        score_sound.set_volume(10)
         can_score = False
 
     # score timer
