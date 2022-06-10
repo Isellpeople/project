@@ -127,7 +127,6 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-            quit()
 
     # input
     keys = pygame.key.get_pressed()
@@ -215,7 +214,6 @@ while over:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-            quit()
     obstacle_pos.xy = 20000, 20000
     position.xy = 20000, 20000
     game_over()

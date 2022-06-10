@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['You_ball.py'],
+    ['You_Ball.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -28,7 +28,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='You_ball',
+    name='You_Ball',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
