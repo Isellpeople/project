@@ -21,7 +21,7 @@ position.xy = 366, 266
 
 # sounds
 mixer.music.load('Sounds/background_noise.wav')
-score_sound = mixer.Sound('Sounds/score_cheering.ogg')
+score_sound = mixer.Sound('Sounds/score_cheering.wav')
 mixer.music.play(-1)
 mixer.music.set_volume(0.02)
 
@@ -171,7 +171,7 @@ while running:
     if score_point():
         score_value += 2
         score_sound.play()
-        score_sound.set_volume(10)
+        score_sound.set_volume(0.025)
         can_score = False
 
     # score timer
