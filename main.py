@@ -1,9 +1,10 @@
 # import files
 import pygame
-import math
 import random
+from pygame import mixer
 
 pygame.init()
+pygame.mixer.init()
 
 running = True
 GRAVITY = pygame.Vector2()
@@ -18,12 +19,19 @@ position = pygame.Vector2()
 position.xy = 366, 266
 (width, height) = (800, 600)
 
+# sounds
+mixer.music.load('Sounds/background_noise.wav')
+mixer.music.play(-1)
+mixer.music.set_volume(0.05)
+
 # score
 can_score = True
 score_value = 0
 font = pygame.font.Font('freesansbold.ttf', 32)
 text_x = 10
 text_y = 10
+score_sound = mixer.Sound('Sounds/score_cheering.ogg')
+score_sound.set_volume(0.5)
 
 # timer
 current_time = 0
@@ -53,7 +61,7 @@ obstacle_time = 0
 can_spawn = True
 
 # collision
-collision_tolerance = 0
+collision_tolerance = -20
 
 # game over text
 over_font = pygame.font.Font('freesansbold.ttf', 64)
@@ -74,6 +82,7 @@ def spawn_obstacle():
 def game_over():
     over_text = over_font.render("GAME OVER!", True, (255, 255, 255))
     screen.blit(over_text, (200, 250))
+    mixer.music.stop()
 
 
 def richochet():
@@ -107,7 +116,7 @@ def score_point():
     global can_score, score_time
     if position.distance_to((50, 300)) <= 40 and can_score:
         score_time = pygame.time.get_ticks()
-        position.x = random.randint(300, 700)
+        position.x = random.randint(500, 700)
         position.y = random.randint(200, 500)
         return True
     else:
@@ -162,6 +171,7 @@ while running:
     # score
     if score_point():
         score_value += 2
+        score_sound.play()
         can_score = False
 
     # score timer
